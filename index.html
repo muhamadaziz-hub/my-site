@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магазин электроники</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .tabs {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column; /* Размещение кнопок вертикально */
+      gap: 20px; /* Отступы между кнопками */
+      align-items: flex-start; /* Выравнивание кнопок по левому краю */
+    }
+
+    .tab-button {
+      background-color: #2f1b7e;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      width: auto; /* Убираем растягивание на весь экран */
+    }
+
+    .tab-button.active {
+      background-color: #c412a3;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Добро пожаловать в магазин</h1>
+
+  <div class="tabs vertical-tabs">
+    <button class="tab-button active" data-tab="notebooks">Ноутбуки</button>
+    <button class="tab-button" data-tab="videocards">Видеокарты</button>
+    <button class="tab-button" data-tab="chips">Чипы</button>
+  </div>
+
+  <div id="notebooks" class="tab-content active">
+    <h2>Каталог: Ноутбуки</h2>
+    <table>
+      <tr>
+        <th>Модель</th>
+        <th>Характеристики</th>
+        <th>Цена</th>
+        <th>Магазин</th>
+        <th>Город</th>
+      </tr>
+      <tr>
+        <td>HP Pavilion 15</td>
+        <td>Intel i5, 16GB RAM, 512GB SSD</td>
+        <td>55 000 ₽</td>
+        <td>DNS</td>
+        <td>Москва</td>
+      </tr>
+      <tr>
+        <td>ASUS VivoBook</td>
+        <td>Ryzen 5, 8GB RAM, 256GB SSD</td>
+        <td>45 000 ₽</td>
+        <td>М.Видео</td>
+        <td>Санкт-Петербург</td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="videocards" class="tab-content">
+    <h2>Каталог: Видеокарты</h2>
+    <table>
+      <tr>
+        <th>Модель</th>
+        <th>Характеристики</th>
+        <th>Цена</th>
+        <th>Магазин</th>
+        <th>Город</th>
+      </tr>
+      <tr>
+        <td>NVIDIA RTX 3060</td>
+        <td>12GB GDDR6, HDMI, DP</td>
+        <td>38 000 ₽</td>
+        <td>Ситилинк</td>
+        <td>Казань</td>
+      </tr>
+      <tr>
+        <td>AMD Radeon RX 6700 XT</td>
+        <td>12GB GDDR6, PCI-E</td>
+        <td>42 000 ₽</td>
+        <td>DNS</td>
+        <td>Новосибирск</td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="chips" class="tab-content">
+    <h2>Каталог: Чипы</h2>
+    <table>
+      <tr>
+        <th>Модель</th>
+        <th>Характеристики</th>
+        <th>Цена</th>
+        <th>Магазин</th>
+        <th>Город</th>
+      </tr>
+      <tr>
+        <td>Intel Core i9-13900K</td>
+        <td>24 ядра, 5.8GHz, сокет LGA1700</td>
+        <td>60 000 ₽</td>
+        <td>Online Trade</td>
+        <td>Екатеринбург</td>
+      </tr>
+      <tr>
+        <td>AMD Ryzen 9 7900X</td>
+        <td>12 ядер, 4.7GHz, сокет AM5</td>
+        <td>55 000 ₽</td>
+        <td>М.Видео</td>
+        <td>Ростов-на-Дону</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', function() {
+          console.log('Кнопка нажата:', this); // Проверим, что событие срабатывает
+
+          const tabId = this.getAttribute('data-tab');
+          const contents = document.querySelectorAll('.tab-content');
+          const buttons = document.querySelectorAll('.tab-button');
+
+          // Убираем активный класс с всех вкладок
+          contents.forEach(content => {
+            content.classList.remove('active');
+          });
+
+          // Убираем активный класс с всех кнопок
+          buttons.forEach(button => {
+            button.classList.remove('active');
+          });
+
+          // Добавляем активный класс для выбранной вкладки
+          document.getElementById(tabId).classList.add('active');
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

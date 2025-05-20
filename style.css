@@ -1,0 +1,39 @@
+body {
+  font-family: arial sans-serif; 
+  background-image: url(andras-vas-Bd7gNnWJBkU-unsplash.jpg);
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  }
+  
+  h1 {
+    color: blueviolet;
+    text-align: center;
+  }
+  
+  h2 {
+    color: darkgreen;
+    margin-top: 30px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: white;
+  }
+  
+  th, td {
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #0b63c8;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
