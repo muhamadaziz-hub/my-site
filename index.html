@@ -2,51 +2,157 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>техно гид</title>
-  <link rel="stylesheet" href="style.css">
-
+  <title>Техно Гид</title>
   <style>
-    .tabs {
-      margin: 20px 0;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('ooooo.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: white;
+    }
+
+    header {
+      background-color: rgba(0, 0, 255, 0.6);
+      padding: 15px;
       display: flex;
-      flex-direction: column; /* Размещение кнопок вертикально */
-      gap: 20px; /* Отступы между кнопками */
-      align-items: flex-start; /* Выравнивание кнопок по левому краю */
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
-    .tab-button {
-      background-color: #2f1b7e;
+    button {
+      background-color: #00bfff;
       border: none;
-      padding: 10px 20px;
-      cursor: pointer;
+      color: white;
+      padding: 10px 15px;
       font-weight: bold;
-      width: auto; /* Убираем растягивание на весь экран */
+      cursor: pointer;
     }
 
-    .tab-button.active {
-      background-color: #c412a3;
-    }
-
-    .tab-content {
+    #menu-buttons {
       display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 15px;
+      z-index: 998;
     }
 
-    .tab-content.active {
+    #menu-buttons button {
+      margin: 5px 0;
+      width: 150px;
+    }
+
+    .content-section {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    .content-section.active {
       display: block;
+    }
+
+    #site-description {
+      font-size: 22px;
+      padding: 50px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+      margin: 30px;
+      border-radius: 10px;
+    }
+
+    .highlight {
+      background-color: pink;
+    }
+
+    #support-form {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: black;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    #search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    #search-input {
+      padding: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background-color: white;
+    }
+
+    th, td {
+      border: 1px solid gray;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0b63c8;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
     }
   </style>
 </head>
 <body>
-  <h1>техно гид.</h1>
 
-  <div class="tabs vertical-tabs">
-    <button class="tab-button active" data-tab="notebooks">Ноутбуки</button>
-    <button class="tab-button" data-tab="videocards">Видеокарты</button>
-    <button class="tab-button" data-tab="chips">Чипы</button>
+  <header>
+    <button id="main-toggle">Главное</button>
+    <div id="menu-buttons">
+      <button class="menu-item" data-target="site-description">Домой</button>
+      <button class="menu-item" data-target="notebooks">Ноутбуки</button>
+      <button class="menu-item" data-target="videocards">Видеокарты</button>
+      <button class="menu-item" data-target="chips">Чипы</button>
+    </div>
+
+    <button id="support-toggle">Поддержка</button>
+
+    <div id="search-bar">
+      <input type="text" id="search-input" placeholder="Поиск...">
+      <button id="search-btn">Найти</button>
+      <button id="reset-btn">Сброс</button>
+    </div>
+  </header>
+
+  <div id="site-description" class="content-section active">
+    <p>
+      Вас приветствует сайт Техно Гид — ваш помощник в выборе техники и электроники!
+      на нашем сайте выможете найти нужные компоненты для сваего пк - ноутбука у нас даже можно узнать где модно купить
+      эти компоненты и даже ноутбуки наш сайт часто бновляеться поэтому можете не волноваться за пригодность информации 
+    </p>
   </div>
 
-  <div id="notebooks" class="tab-content active">
+  <div id="notebooks" class="content-section">
     <h2>Каталог: Ноутбуки</h2>
     <table>
       <tr>
@@ -73,7 +179,7 @@
     </table>
   </div>
 
-  <div id="videocards" class="tab-content">
+  <div id="videocards" class="content-section">
     <h2>Каталог: Видеокарты</h2>
     <table>
       <tr>
@@ -100,7 +206,7 @@
     </table>
   </div>
 
-  <div id="chips" class="tab-content">
+  <div id="chips" class="content-section">
     <h2>Каталог: Чипы</h2>
     <table>
       <tr>
@@ -127,33 +233,80 @@
     </table>
   </div>
 
+  <div id="support-form">
+    <h2>Поддержка</h2>
+    <form action="mailto:kamma2994@gmail.com" method="POST" enctype="text/plain">
+      <textarea name="message" rows="6" placeholder="Введите ваши вопросы или жалобы..."></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', function() {
-          console.log('Кнопка нажата:', this); // Проверим, что событие срабатывает
+    const mainToggle = document.getElementById('main-toggle');
+    const menuButtons = document.getElementById('menu-buttons');
+    const supportToggle = document.getElementById('support-toggle');
+    const supportForm = document.getElementById('support-form');
+    const contentSections = document.querySelectorAll('.content-section');
 
-          const tabId = this.getAttribute('data-tab');
-          const contents = document.querySelectorAll('.tab-content');
-          const buttons = document.querySelectorAll('.tab-button');
+    mainToggle.addEventListener('click', () => {
+      menuButtons.style.display = (menuButtons.style.display === 'flex') ? 'none' : 'flex';
+    });
 
-          // Убираем активный класс с всех вкладок
-          contents.forEach(content => {
-            content.classList.remove('active');
-          });
+    supportToggle.addEventListener('click', () => {
+      contentSections.forEach(sec => sec.classList.remove('active'));
+      menuButtons.style.display = 'none';
+      supportForm.style.display = 'block';
+    });
 
-          // Убираем активный класс с всех кнопок
-          buttons.forEach(button => {
-            button.classList.remove('active');
-          });
+    document.querySelectorAll('.menu-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        contentSections.forEach(sec => {
+          sec.classList.remove('active');
+          if (sec.id === targetId) {
+            sec.classList.add('active');
+          }
+        });
+        supportForm.style.display = 'none';
+        menuButtons.style.display = 'none';
+      });
+    });
 
-          // Добавляем активный класс для выбранной вкладки
-          document.getElementById(tabId).classList.add('active');
-          this.classList.add('active');
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const resetBtn = document.getElementById('reset-btn');
+
+    searchBtn.addEventListener('click', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      let found = false;
+      contentSections.forEach(sec => {
+        sec.classList.remove('active');
+        sec.querySelectorAll('td').forEach(td => {
+          td.classList.remove('highlight');
+          if (td.textContent.toLowerCase().includes(query) && query !== '') {
+            td.classList.add('highlight');
+            sec.classList.add('active');
+            found = true;
+          }
         });
       });
+      supportForm.style.display = 'none';
+      if (!found && query !== '') {
+        alert('Информация не найдена.');
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      contentSections.forEach(sec => {
+        sec.classList.remove('active');
+        sec.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+      });
+      document.getElementById('site-description').classList.add('active');
+      supportForm.style.display = 'none';
     });
   </script>
 
 </body>
 </html>
+
